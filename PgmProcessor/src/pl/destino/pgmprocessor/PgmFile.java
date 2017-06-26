@@ -40,6 +40,9 @@ public class PgmFile {
         return this.rows.get(index);
     }
 */
+    public String getHeader(){
+        return "P2 "+String.valueOf(width)+" "+String.valueOf(height)+" "+String.valueOf(maxVal);
+    }
     
     public String getPixel(int x, int y){
         return rows[x][y];
