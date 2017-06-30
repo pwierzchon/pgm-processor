@@ -21,29 +21,6 @@ import java.util.logging.Logger;
  */
 public class PgmProcessor {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-
-        try {
-            File file = new File("C:\\Users\\patryk.wierzchon\\Pictures\\earth.pgm");
-            PgmFile image = loadImage(file);
-
-            PgmFile imageR = rotateImageRight(image);
-            printImage(imageR);
-
-            PgmFile imageL = rotateImageLeft(image);
-            printImage(imageL);
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(PgmProcessor.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(PgmProcessor.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
     public static void printImage(PgmFile image) throws IOException {
         File result = new File("C:\\Users\\patryk.wierzchon\\Pictures\\" + image.getFileName());
         BufferedWriter bw = new BufferedWriter(new FileWriter(result));
@@ -97,7 +74,7 @@ public class PgmProcessor {
                 image.setPixel(j, i, br.readLine());
             }
         }
-        
+
         return image;
     }
 
