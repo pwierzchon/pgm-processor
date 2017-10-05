@@ -8,6 +8,7 @@ package pl.destino.pgmprocessor;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static pl.destino.pgmprocessor.PgmProcessor.loadImage;
@@ -26,7 +27,8 @@ public class Main {
      */
     public static void main(String[] args) {
         try {
-            File file = new File("C:\\Users\\patryk.wierzchon\\Pictures\\earth.pgm");
+
+            File file = new File("earth-H.pgm");
             PgmFile image = loadImage(file);
 
             PgmFile imageR = rotateImageRight(image);
@@ -35,11 +37,16 @@ public class Main {
             PgmFile imageL = rotateImageLeft(image);
             printImage(imageL);
 
+            PgmFile imageV = PgmProcessor.flipImageVertical(image);
+            printImage(imageV);
+
+            PgmFile imageH = PgmProcessor.flipImageHorizontal(image);
+            printImage(imageH);
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
         } catch (IOException ex) {
             System.out.println(ex);
         }
     }
-    
+
 }

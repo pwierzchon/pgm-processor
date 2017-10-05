@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class PgmProcessor {
 
     public static void printImage(PgmFile image) throws IOException {
-        File result = new File("C:\\Users\\patryk.wierzchon\\Pictures\\" + image.getFileName());
+        File result = new File(image.getFileName());
         BufferedWriter bw = new BufferedWriter(new FileWriter(result));
         bw.write(image.getHeader() + "\n");
         for (int i = 0; i < image.getHeight(); i++) {
@@ -44,6 +44,29 @@ public class PgmProcessor {
         }
         return imageR;
     }
+
+    public static PgmFile flipImageVertical(PgmFile image) {
+        System.out.println("flip image vertical");
+        PgmFile imageV = new PgmFile("earth-V.pgm", image.getWidth(), image.getHeight(), image.getMaxVal());
+        for (int i = 0; i < imageV.getHeight(); i++) {
+            for (int j = 0; j < imageV.getWidth(); j++) {
+                imageV.setPixel(j, imageV.getHeight()-(i+1), image.getPixel(j, i));
+            }
+        }
+        return imageV;
+    }
+    
+        public static PgmFile flipImageHorizontal(PgmFile image) {
+        System.out.println("flip image horizontal");
+        PgmFile imageH = new PgmFile("earth-H.pgm", image.getWidth(), image.getHeight(), image.getMaxVal());
+        for (int i = 0; i < imageH.getHeight(); i++) {
+            for (int j = 0; j < imageH.getWidth(); j++) {
+                imageH.setPixel(imageH.getWidth() - (j+1), i, image.getPixel(j, i));
+            }
+        }
+        return imageH;
+    }
+
 
     public static PgmFile rotateImageLeft(PgmFile image) {
         //rotate the file right
