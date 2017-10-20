@@ -15,6 +15,7 @@ import java.util.List;
 public class PgmFile {
 
     private String fileName;
+    private final String extension =".pgm";
 
     private int width;
     private int height;
@@ -83,7 +84,9 @@ public class PgmFile {
     public void setMaxVal(int maxVal) {
         this.maxVal = maxVal;
     }
-    
-    
+
+    public String getExtension() {
+        return extension;
+    }
 
 }

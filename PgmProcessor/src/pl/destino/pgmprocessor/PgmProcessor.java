@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class PgmProcessor {
 
     public static void printImage(PgmFile image) throws IOException {
-        File result = new File(image.getFileName());
+        File result = new File(image.getFileName()+image.getExtension());
         BufferedWriter bw = new BufferedWriter(new FileWriter(result));
         bw.write(image.getHeader() + "\n");
         for (int i = 0; i < image.getHeight(); i++) {
